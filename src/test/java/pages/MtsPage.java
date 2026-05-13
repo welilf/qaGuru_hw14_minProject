@@ -17,6 +17,8 @@ public class MtsPage {
     private final SelenideElement loginButton = $("#profile-widget-app a[href*='login']");
     private final SelenideElement mobileMenu = $(".main-menu-navigation__item-inner");
     private final SelenideElement logo = $(".middle-menu__logo");
+    private final SelenideElement locationTooltip = $(".tooltip-location__wrapper");
+    private final SelenideElement closeTooltipButton = $(".tooltip-location__wrapper .btn-faded");
 
     // Actions
     @Step("Открыть главную страницу МТС")
@@ -45,6 +47,9 @@ public class MtsPage {
 
     @Step("Нажать на поиск")
     public MtsPage clickSearch() {
+        if (locationTooltip.isDisplayed()) {
+            closeTooltipButton.click();
+        }
         searchButton.click();
         return this;
     }
