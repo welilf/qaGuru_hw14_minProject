@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+    id('io.qameta.allure') version '4.0.0'
+}
+
+group = 'com.welilf'
+version = '1.0-SNAPSHOT'
+
+allure {
+    report {
+        version.set("2.19.0")
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set("2.19.0")
+            }
+        }
+    }
+
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // JUnit 5
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+
+    // Selenide
+    testImplementation 'com.codeborne:selenide:7.14.0'
+
+    // javaFaker
+    testImplementation 'com.github.javafaker:javafaker:1.0.2'
+
+    // Allure Selenide
+    testImplementation 'io.qameta.allure:allure-selenide:2.19.0'
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+    systemProperties(System.getProperties());
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
