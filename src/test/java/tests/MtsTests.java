@@ -58,6 +58,7 @@ public class MtsTests {
                 .verifyMobileMenuIsVisible(data.mobileMenuTitle)
                 .checkPrivateClientsLink(data.privateClientsTitle)
                 .clickSearch()
+                .back()
                 .clickLogin();
     }
 }

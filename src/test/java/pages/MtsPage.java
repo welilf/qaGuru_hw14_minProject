@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import data.TestData;
 import io.qameta.allure.Step;
@@ -52,6 +53,12 @@ public class MtsPage {
             confirmLocationButton.click();
         }
         searchButton.click();
+        return this;
+    }
+
+    @Step("Возвращаемся назад")
+    public MtsPage back() {
+        Selenide.back();
         return this;
     }
 
