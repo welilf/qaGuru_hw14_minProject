@@ -1,8 +1,7 @@
 package pages;
 
-import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import data.TestData;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
@@ -21,6 +20,8 @@ public class MtsPage {
     private final SelenideElement logo = $(".middle-menu__logo");
     private final SelenideElement locationTooltip = $(".tooltip-location__wrapper");
     private final SelenideElement confirmLocationButton = $(".tooltip-location__wrapper").$(byText("Да, верно"));
+    private final SelenideElement searchModal = $(".search-modal-widgets");
+    private final SelenideElement loginModal = $(".mts-universal-modal__content");
 
     // Actions
     @Step("Открыть главную страницу МТС")
@@ -56,11 +57,24 @@ public class MtsPage {
         return this;
     }
 
+    @Step("Проверить появление модального окна поиска")
+    public MtsPage verifySearchModalIsVisible() {
+        searchModal.shouldBe(Condition.visible);
+        return this;
+    }
+
     @Step("Нажать на кнопку Войти")
-    public void clickLogin() {
+    public MtsPage clickLogin() {
         if (locationTooltip.isDisplayed()) {
             confirmLocationButton.click();
         }
         loginButton.click();
+        return this;
+    }
+
+    @Step("Проверить появление модального окна логина")
+    public MtsPage verifyLoginModalIsVisible() {
+        loginModal.shouldBe(Condition.visible);
+        return this;
     }
 }

@@ -15,37 +15,37 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class MtsTests {
 
-     @BeforeAll
-      static void setUpConfig() {
+    @BeforeAll
+    static void setUpConfig() {
 
-          Configuration.browser = System.getProperty("browser", "chrome");
-          Configuration.browserVersion = System.getProperty("browserVersion", "127.0");
-          Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
-          Configuration.browserSize = System.getProperty("browserScreenSize", "1920x1080");
-          Configuration.baseUrl = System.getProperty("baseUrl");
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion", "127.0");
+        Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
+        Configuration.browserSize = System.getProperty("browserScreenSize", "1920x1080");
+        Configuration.baseUrl = System.getProperty("baseUrl");
 
-          String selenoidUrl = System.getProperty("selenoidURL");
-          String selenoidLogin = System.getProperty("selenoidLogin");
-          String selenoidPass = System.getProperty("selenoidPass");
+        String selenoidUrl = System.getProperty("selenoidURL");
+        String selenoidLogin = System.getProperty("selenoidLogin");
+        String selenoidPass = System.getProperty("selenoidPass");
 
-          Configuration.remote = "https://" + selenoidLogin + ":" + selenoidPass + "@" + selenoidUrl;
+        Configuration.remote = "https://" + selenoidLogin + ":" + selenoidPass + "@" + selenoidUrl;
 
-          DesiredCapabilities capabilities = new DesiredCapabilities();
-          capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                  "enableVNC", true,
-                  "enableVideo", true
-          ));
-          Configuration.browserCapabilities = capabilities;
-      }
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+        Configuration.browserCapabilities = capabilities;
+    }
 
-      @AfterEach
-      void addAttachments() {
-          Attach.screenshotAs("Last screenshot");
-          Attach.pageSource();
-          Attach.browserConsoleLogs();
-          Attach.addVideo();
-          closeWebDriver();
-      }
+    @AfterEach
+    void addAttachments() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
+        closeWebDriver();
+    }
 
     @Test
     void mtsMainPageTests_dsl() {
@@ -58,7 +58,9 @@ public class MtsTests {
                 .verifyMobileMenuIsVisible(data.mobileMenuTitle)
                 .checkPrivateClientsLink(data.privateClientsTitle)
                 .clickSearch()
+                .verifySearchModalIsVisible()
                 .openPage()
-                .clickLogin();
+                .clickLogin()
+                .verifyLoginModalIsVisible();
     }
 }
