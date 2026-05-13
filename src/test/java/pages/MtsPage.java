@@ -6,6 +6,7 @@ import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -18,7 +19,7 @@ public class MtsPage {
     private final SelenideElement mobileMenu = $(".main-menu-navigation__item-inner");
     private final SelenideElement logo = $(".middle-menu__logo");
     private final SelenideElement locationTooltip = $(".tooltip-location__wrapper");
-    private final SelenideElement closeTooltipButton = $(".tooltip-location__wrapper .btn-faded");
+    private final SelenideElement confirmLocationButton = $(".tooltip-location__wrapper").$(byText("Да, верно"));
 
     // Actions
     @Step("Открыть главную страницу МТС")
@@ -48,7 +49,7 @@ public class MtsPage {
     @Step("Нажать на поиск")
     public MtsPage clickSearch() {
         if (locationTooltip.isDisplayed()) {
-            closeTooltipButton.click();
+            confirmLocationButton.click();
         }
         searchButton.click();
         return this;
