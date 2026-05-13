@@ -21,13 +21,7 @@ public class MtsPage {
     // Actions
     @Step("Открыть главную страницу МТС")
     public MtsPage openPage() {
-        open("https://www.mts.ru/");
-        return this;
-    }
-
-    @Step("Проверить, что пункт 'Мобильная связь' активен и виден")
-    public MtsPage verifyMobileMenuIsVisible(String title) {
-        mobileMenu.shouldHave(text(title));
+        open("https://www.mts.ru");
         return this;
     }
 
@@ -37,15 +31,21 @@ public class MtsPage {
         return this;
     }
 
-    @Step("Нажать на поиск")
-    public MtsPage clickSearch() {
-        searchButton.click();
+    @Step("Проверить, что пункт 'Мобильная связь' активен и виден")
+    public MtsPage verifyMobileMenuIsVisible(String title) {
+        mobileMenu.shouldHave(text(title));
         return this;
     }
 
     @Step("Проверить наличие ссылки на Частных клиентов")
     public MtsPage checkPrivateClientsLink(String title) {
         privateClientsLink.shouldHave(text(title));
+        return this;
+    }
+
+    @Step("Нажать на поиск")
+    public MtsPage clickSearch() {
+        searchButton.click();
         return this;
     }
 

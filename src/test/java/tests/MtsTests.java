@@ -15,9 +15,9 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class MtsTests {
 
-    /*  @BeforeAll
+     @BeforeAll
       static void setUpConfig() {
-          
+
           Configuration.browser = System.getProperty("browser", "chrome");
           Configuration.browserVersion = System.getProperty("browserVersion", "127.0");
           Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
@@ -36,7 +36,6 @@ public class MtsTests {
                   "enableVideo", true
           ));
           Configuration.browserCapabilities = capabilities;
-
       }
 
       @AfterEach
@@ -47,7 +46,7 @@ public class MtsTests {
           Attach.addVideo();
           closeWebDriver();
       }
-  */
+
     @Test
     void mtsMainPageTests_dsl() {
 
