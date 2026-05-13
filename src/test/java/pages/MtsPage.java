@@ -56,14 +56,11 @@ public class MtsPage {
         return this;
     }
 
-    @Step("Возвращаемся назад")
-    public MtsPage back() {
-        Selenide.back();
-        return this;
-    }
-
     @Step("Нажать на кнопку Войти")
     public void clickLogin() {
+        if (locationTooltip.isDisplayed()) {
+            confirmLocationButton.click();
+        }
         loginButton.click();
     }
 }
