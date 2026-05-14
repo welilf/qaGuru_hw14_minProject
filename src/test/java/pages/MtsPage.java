@@ -36,7 +36,7 @@ public class MtsPage {
         return this;
     }
 
-    @Step("Проверить, что пункт 'Мобильная связь' активен и виден")
+    @Step("Проверить, что пункт 'Мобильная связь' виден")
     public MtsPage verifyMobileMenuIsVisible(String title) {
         mobileMenu.shouldHave(text(title));
         return this;
@@ -48,7 +48,7 @@ public class MtsPage {
         return this;
     }
 
-    @Step("Нажать на поиск")
+    @Step("Нажать на кнопку поиска")
     public MtsPage clickSearch() {
         if (locationTooltip.isDisplayed()) {
             confirmLocationButton.click();
