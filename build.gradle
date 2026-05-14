@@ -32,9 +32,6 @@ dependencies {
     // Selenide
     testImplementation 'com.codeborne:selenide:7.14.0'
 
-    // javaFaker
-    testImplementation 'com.github.javafaker:javafaker:1.0.2'
-
     // Allure Selenide
     testImplementation 'io.qameta.allure:allure-selenide:2.19.0'
 }
