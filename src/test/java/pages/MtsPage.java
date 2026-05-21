@@ -52,6 +52,7 @@ public class MtsPage {
     public MtsPage clickSearch() {
         if (locationTooltip.isDisplayed()) {
             confirmLocationButton.click();
+            locationTooltip.shouldNotBe(visible);
         }
         searchButton.click();
         return this;
