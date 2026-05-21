@@ -50,10 +50,9 @@ public class MtsPage {
 
     @Step("Нажать на кнопку поиска")
     public MtsPage clickSearch() {
-        if (locationTooltip.isDisplayed()) {
-            confirmLocationButton.click();
-            locationTooltip.shouldNotBe(visible);
-        }
+        locationTooltip.shouldBe(visible);
+        confirmLocationButton.click();
+        locationTooltip.shouldNotBe(visible);
         searchButton.click();
         return this;
     }
