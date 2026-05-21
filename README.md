@@ -40,13 +40,13 @@
 > ![Allure Dashboard](media/allure_main.png)
 > > **Скриншот с отражением аннотаций и вложений:**
 > ![Allure Suites](media/allure_suites.png)
-> [Ссылка на пример отчета](https://jenkins.autotests.cloud/view/java_students/job/qaGuru_hw14_minProject/16/allure/)
+> [Ссылка на пример отчета](https://jenkins.autotests.cloud/view/java_students/job/qaGuru_hw14_minProject/19/allure/)
 
 #### Jenkins Pipeline
 Тесты запускаются автоматически на удаленном сервере. Проект полностью интегрирован в CI/CD процесс.
 > > **Скриншот страницы запуска сборки с возможностью настройки необходимых параметров:**
 > ![Jenkins Build page](media/jenkins_build_with_parameters.png)
-> [Ссылка на пример сборки](https://jenkins.autotests.cloud/view/java_students/job/qaGuru_hw14_minProject/16/)
+> [Ссылка на пример сборки](https://jenkins.autotests.cloud/view/java_students/job/qaGuru_hw14_minProject/19/)
 
 #### Telegram Notifications
 Результат каждого билда приходит в Telegram с указанием количества успешных/упавших тестов и ссылкой на отчет.
