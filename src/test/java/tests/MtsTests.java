@@ -5,6 +5,7 @@ import data.TestData;
 import helpers.Attach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.MtsPage;
@@ -14,6 +15,9 @@ import java.util.Map;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class MtsTests {
+
+    MtsPage mtsPage = new MtsPage();
+    TestData data = new TestData();
 
     @BeforeAll
     static void setUpConfig() {
@@ -48,18 +52,38 @@ public class MtsTests {
     }
 
     @Test
-    void mtsMainPageTests_dsl() {
-
-        MtsPage mtsPage = new MtsPage();
-        TestData data = new TestData();
-
+    @DisplayName("Проверка видимости логотипа на главной странице")
+    void checkLogoOnMainPage() {
         mtsPage.openPage()
-                .checkLogo()
-                .verifyMobileMenuIsVisible(data.mobileMenuTitle)
-                .checkPrivateClientsLink(data.privateClientsTitle)
+                .checkLogo();
+    }
+
+    @Test
+    @DisplayName("Проверка того, что пункт 'Мобильная связь' виден на главной странице")
+    void verifyMobileMenuIsVisibleOnMainPage() {
+        mtsPage.openPage()
+                .verifyMobileMenuIsVisible(data.mobileMenuTitle);
+    }
+
+    @Test
+    @DisplayName("Проверка наличия ссылки на Частных клиентов на главной странице")
+    void checkPrivateClientsLinkOnMainPage() {
+        mtsPage.openPage()
+                .checkPrivateClientsLink(data.privateClientsTitle);
+    }
+
+    @Test
+    @DisplayName("Проверка появления модального окна поиска после нажатия на кнопку поиска")
+    void checkSearchModalWindow() {
+        mtsPage.openPage()
                 .clickSearch()
-                .verifySearchModalIsVisible()
-                .openPage()
+                .verifySearchModalIsVisible();
+    }
+
+    @Test
+    @DisplayName("Проверка появления модального окна логина после нажатия на кнопку 'Войти'")
+    void checkLoginModalWindow() {
+        mtsPage.openPage()
                 .clickLogin()
                 .verifyLoginModalIsVisible();
     }
