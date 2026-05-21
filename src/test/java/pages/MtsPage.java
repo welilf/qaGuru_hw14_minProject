@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class MtsPage {
 
     // Elements
-    private final SelenideElement searchButton = $(".header-search__btn");
+    private final SelenideElement searchButton = $(".header-search__text");
     private final SelenideElement privateClientsLink = $("a[eventid='vntMtsCrossTopLinks'][href='/personal']");
     private final SelenideElement loginButton = $("#profile-widget-app a[href*='login']");
     private final SelenideElement mobileMenu = $(".main-menu-navigation__item-inner");
