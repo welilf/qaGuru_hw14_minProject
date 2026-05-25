@@ -34,19 +34,17 @@
 
 ### 📊 Отчетность и уведомления
 
-#### Allure Report
+#### [Allure Report](https://jenkins.autotests.cloud/view/java_students/job/qaGuru_hw14_minProject/19/allure/)
 Детальные отчеты с аннотациями `@Step`, скриншотами и системными логами.
 > **Скриншот Dashboard:**
 > ![Allure Dashboard](media/allure_main.png)
 > > **Скриншот с отражением аннотаций и вложений:**
 > ![Allure Suites](media/allure_suites.png)
-> [Ссылка на пример отчета](https://jenkins.autotests.cloud/view/java_students/job/qaGuru_hw14_minProject/19/allure/)
 
-#### Jenkins Pipeline
+#### [Jenkins Pipeline](https://jenkins.autotests.cloud/view/java_students/job/qaGuru_hw14_minProject/19/)
 Тесты запускаются автоматически на удаленном сервере. Проект полностью интегрирован в CI/CD процесс.
 > > **Скриншот страницы запуска сборки с возможностью настройки необходимых параметров:**
 > ![Jenkins Build page](media/jenkins_build_with_parameters.png)
-> [Ссылка на пример сборки](https://jenkins.autotests.cloud/view/java_students/job/qaGuru_hw14_minProject/19/)
 
 #### Telegram Notifications
 Результат каждого билда приходит в Telegram с указанием количества успешных/упавших тестов и ссылкой на отчет.
