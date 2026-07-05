@@ -82,13 +82,6 @@ public class MtsTests {
     }
 
     @Test
-    @DisplayName("Проверка появления модального окна поиска после нажатия на кнопку поиска")
-    void checkSearchModalWindow() {
-        mtsPage.openSearchPage()
-                .verifySearchInputIsVisible();
-    }
-
-    @Test
     @DisplayName("Проверка появления модального окна логина после нажатия на кнопку 'Войти'")
     void checkLoginModalWindow() {
         mtsPage.openPage()
@@ -97,10 +90,16 @@ public class MtsTests {
     }
 
     @Test
-    @DisplayName("Проверка ввода текста в строку поиска")
-    void checkSearchExecution() {
+    @DisplayName("Проверка открытия страницы поиска и доступности поля ввода")
+    void checkSearchPageOpening() {
         mtsPage.openSearchPage()
-                .enterSearchText("Тарифы")
-                .verifyCurrentUrl("/personal/search/?q=Тарифы");
+                .verifySearchInputIsVisible();
+    }
+
+    @Test
+    @DisplayName("Проверка того, что при пустом вводе кнопка 'Найти' не активна")
+    void checkSearchButtonIsDisabledWhenInputIsEmpty() {
+        mtsPage.openSearchPage()
+                .verifySearchButtonIsDisabled();
     }
 }

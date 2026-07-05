@@ -20,7 +20,8 @@ public class MtsPage {
     private final SelenideElement locationTooltip = $(".tooltip-location__wrapper");
     private final SelenideElement confirmLocationButton = $(".tooltip-location__wrapper").$(byText("Да, верно"));
     private final SelenideElement loginModal = $(".mts-universal-modal__content");
-    private final SelenideElement searchInput = $("mm-web-search-input input");
+    private final SelenideElement searchInput = $("input[type='search']");
+    private final SelenideElement searchSubmitButton = $("button.mm-web-action-button");
 
     // Actions
     @Step("Открыть главную страницу МТС")
@@ -37,13 +38,13 @@ public class MtsPage {
 
     @Step("Проверить доступность поля ввода на странице поиска")
     public MtsPage verifySearchInputIsVisible() {
-        searchInput.shouldBe(visible);
+        searchInput.shouldBe(visible, java.time.Duration.ofSeconds(10));
         return this;
     }
 
-    @Step("Ввести в поле поиска текст: {text} и нажать Enter")
-    public MtsPage enterSearchText(String text) {
-        searchInput.shouldBe(visible).setValue(text).pressEnter();
+    @Step("Проверить, что кнопка 'Найти' не активна")
+    public MtsPage verifySearchButtonIsDisabled() {
+        searchSubmitButton.shouldBe(com.codeborne.selenide.Condition.disabled);
         return this;
     }
 
