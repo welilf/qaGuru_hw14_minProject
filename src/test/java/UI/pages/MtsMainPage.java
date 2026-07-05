@@ -1,4 +1,4 @@
-package pages;
+package UI.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class MtsPage {
+public class MtsMainPage {
 
     // Elements
     private final SelenideElement privateClientsLink = $("a[eventid='vntMtsCrossTopLinks'][href='/personal']");
@@ -19,58 +19,39 @@ public class MtsPage {
     private final SelenideElement locationTooltip = $(".tooltip-location__wrapper");
     private final SelenideElement confirmLocationButton = $(".tooltip-location__wrapper").$(byText("Да, верно"));
     private final SelenideElement loginModal = $(".mts-universal-modal__content");
-    private final SelenideElement searchInput = $("input[type='search']");
-    private final SelenideElement searchSubmitButton = $x("//button[contains(@class, 'mm-web-action-button') and contains(., 'Найти')]");    // Actions
 
+    //Actions
     @Step("Открыть главную страницу МТС")
-    public MtsPage openPage() {
+    public MtsMainPage openPage() {
         open("https://www.mts.ru");
         return this;
     }
 
-    @Step("Открыть страницу поиска напрямую")
-    public MtsPage openSearchPage() {
-        open("https://www.mts.ru/personal/search");
-        return this;
-    }
-
-    @Step("Проверить доступность поля ввода на странице поиска")
-    public MtsPage verifySearchInputIsVisible() {
-        searchInput.shouldBe(visible, java.time.Duration.ofSeconds(10));
-        return this;
-    }
-
-    @Step("Проверить, что кнопка 'Найти' не активна")
-    public MtsPage verifySearchButtonIsDisabled() {
-        searchSubmitButton.shouldBe(com.codeborne.selenide.Condition.disabled);
-        return this;
-    }
-
     @Step("Проверить видимость логотипа")
-    public MtsPage checkLogo() {
+    public MtsMainPage checkLogo() {
         logo.shouldBe(visible);
         return this;
     }
 
     @Step("Проверить наличие ссылки 'Госзаказчикам'")
-    public MtsPage checkGosLink(String title) {
+    public MtsMainPage checkGosLink(String title) {
         gosLink.shouldHave(text(title));
         return this;
     }
 
     @Step("Кликнуть на ссылку 'Госзаказчикам'")
-    public MtsPage clickGosLink() {
+    public MtsMainPage clickGosLink() {
         gosLink.click();
         return this;
     }
 
     @Step("Проверить наличие ссылки на Частных клиентов")
-    public MtsPage checkPrivateClientsLink(String title) {
+    public MtsMainPage checkPrivateClientsLink(String title) {
         privateClientsLink.shouldHave(text(title));
         return this;
     }
     @Step("Нажать на кнопку Войти")
-    public MtsPage clickLogin() {
+    public MtsMainPage clickLogin() {
         if (locationTooltip.isDisplayed()) {
             confirmLocationButton.click();
         }
@@ -79,13 +60,13 @@ public class MtsPage {
     }
 
     @Step("Проверить появление модального окна логина")
-    public MtsPage verifyLoginModalIsVisible() {
+    public MtsMainPage verifyLoginModalIsVisible() {
         loginModal.shouldBe(Condition.visible);
         return this;
     }
 
     @Step("Проверить, что текущий URL содержит {expectedUrl}")
-    public MtsPage verifyCurrentUrl(String expectedUrl) {
+    public MtsMainPage verifyCurrentUrl(String expectedUrl) {
         com.codeborne.selenide.WebDriverRunner.url().contains(expectedUrl);
         return this;
     }

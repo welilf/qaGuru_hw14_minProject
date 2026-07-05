@@ -1,14 +1,15 @@
-package tests;
+package UI.tests;
 
 import com.codeborne.selenide.Configuration;
-import data.TestData;
-import helpers.Attach;
+import UI.data.TestData;
+import UI.helpers.Attach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import pages.MtsPage;
+import UI.pages.MtsMainPage;
+import UI.pages.MtsSearchPage;
 
 import java.util.Map;
 
@@ -16,7 +17,8 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class MtsTests {
 
-    MtsPage mtsPage = new MtsPage();
+    MtsMainPage mtsPage = new MtsMainPage();
+    MtsSearchPage searchPage = new MtsSearchPage();
     TestData data = new TestData();
 
     @BeforeAll
@@ -92,14 +94,14 @@ public class MtsTests {
     @Test
     @DisplayName("Проверка открытия страницы поиска и доступности поля ввода")
     void checkSearchPageOpening() {
-        mtsPage.openSearchPage()
+        searchPage.openSearchPage()
                 .verifySearchInputIsVisible();
     }
 
     @Test
     @DisplayName("Проверка того, что при пустом вводе кнопка 'Найти' не активна")
     void checkSearchButtonIsDisabledWhenInputIsEmpty() {
-        mtsPage.openSearchPage()
+        searchPage.openSearchPage()
                 .verifySearchButtonIsDisabled();
     }
 }

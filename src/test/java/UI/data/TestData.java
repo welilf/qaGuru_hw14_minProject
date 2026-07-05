@@ -1,4 +1,4 @@
-package data;
+package UI.data;
 
 public class TestData {
     public String gosTitle = "Госзаказчикам";
