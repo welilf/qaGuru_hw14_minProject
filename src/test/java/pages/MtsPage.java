@@ -13,7 +13,6 @@ import static com.codeborne.selenide.Selenide.open;
 public class MtsPage {
 
     // Elements
-    private final SelenideElement searchButton = $(".header-search__icon");
     private final SelenideElement privateClientsLink = $("a[eventid='vntMtsCrossTopLinks'][href='/personal']");
     private final SelenideElement loginButton = $("#profile-widget-app a[href*='login']");
     private final SelenideElement gosLink = $("a[eventid='vntMtsCrossTopLinks'][href='/gos']");
@@ -21,13 +20,30 @@ public class MtsPage {
     private final SelenideElement locationTooltip = $(".tooltip-location__wrapper");
     private final SelenideElement confirmLocationButton = $(".tooltip-location__wrapper").$(byText("Да, верно"));
     private final SelenideElement loginModal = $(".mts-universal-modal__content");
-    private final SelenideElement searchModal = $(".search-modal__search");
     private final SelenideElement searchInput = $("mm-web-search-input input");
 
     // Actions
     @Step("Открыть главную страницу МТС")
     public MtsPage openPage() {
         open("https://www.mts.ru");
+        return this;
+    }
+
+    @Step("Открыть страницу поиска напрямую")
+    public MtsPage openSearchPage() {
+        open("https://www.mts.ru/personal/search");
+        return this;
+    }
+
+    @Step("Проверить доступность поля ввода на странице поиска")
+    public MtsPage verifySearchInputIsVisible() {
+        searchInput.shouldBe(visible);
+        return this;
+    }
+
+    @Step("Ввести в поле поиска текст: {text} и нажать Enter")
+    public MtsPage enterSearchText(String text) {
+        searchInput.shouldBe(visible).setValue(text).pressEnter();
         return this;
     }
 
@@ -54,22 +70,6 @@ public class MtsPage {
         privateClientsLink.shouldHave(text(title));
         return this;
     }
-
-    @Step("Нажать на кнопку поиска")
-    public MtsPage clickSearch() {
-        locationTooltip.shouldBe(visible);
-        confirmLocationButton.click();
-        locationTooltip.shouldNotBe(visible);
-        searchButton.click();
-        return this;
-    }
-
-    @Step("Проверить появление модального окна поиска")
-    public MtsPage verifySearchModalIsVisible() {
-        searchModal.shouldBe(Condition.visible);
-        return this;
-    }
-
     @Step("Нажать на кнопку Войти")
     public MtsPage clickLogin() {
         if (locationTooltip.isDisplayed()) {
@@ -88,12 +88,6 @@ public class MtsPage {
     @Step("Проверить, что текущий URL содержит {expectedUrl}")
     public MtsPage verifyCurrentUrl(String expectedUrl) {
         com.codeborne.selenide.WebDriverRunner.url().contains(expectedUrl);
-        return this;
-    }
-
-    @Step("Ввести в поле поиска текст: {text} и нажать Enter")
-    public MtsPage enterSearchText(String text) {
-        searchInput.setValue(text).pressEnter();
         return this;
     }
 }

@@ -84,9 +84,8 @@ public class MtsTests {
     @Test
     @DisplayName("Проверка появления модального окна поиска после нажатия на кнопку поиска")
     void checkSearchModalWindow() {
-        mtsPage.openPage()
-                .clickSearch()
-                .verifySearchModalIsVisible();
+        mtsPage.openSearchPage()
+                .verifySearchInputIsVisible();
     }
 
     @Test
@@ -100,8 +99,7 @@ public class MtsTests {
     @Test
     @DisplayName("Проверка ввода текста в строку поиска")
     void checkSearchExecution() {
-        mtsPage.openPage()
-                .clickSearch()
+        mtsPage.openSearchPage()
                 .enterSearchText("Тарифы")
                 .verifyCurrentUrl("/personal/search/?q=Тарифы");
     }
