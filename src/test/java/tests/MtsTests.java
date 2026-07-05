@@ -102,6 +102,7 @@ public class MtsTests {
     void checkSearchExecution() {
         mtsPage.openPage()
                 .clickSearch()
-                .enterSearchText("Тарифы");
+                .enterSearchText("Тарифы")
+                .verifyCurrentUrl("/personal/search/?q=Тарифы");
     }
 }
