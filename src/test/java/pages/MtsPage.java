@@ -7,8 +7,7 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class MtsPage {
 
@@ -21,9 +20,8 @@ public class MtsPage {
     private final SelenideElement confirmLocationButton = $(".tooltip-location__wrapper").$(byText("Да, верно"));
     private final SelenideElement loginModal = $(".mts-universal-modal__content");
     private final SelenideElement searchInput = $("input[type='search']");
-    private final SelenideElement searchSubmitButton = $("button.mm-web-action-button");
+    private final SelenideElement searchSubmitButton = $x("//button[contains(@class, 'mm-web-action-button') and contains(., 'Найти')]");    // Actions
 
-    // Actions
     @Step("Открыть главную страницу МТС")
     public MtsPage openPage() {
         open("https://www.mts.ru");
