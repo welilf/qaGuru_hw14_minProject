@@ -21,7 +21,8 @@ public class MtsPage {
     private final SelenideElement locationTooltip = $(".tooltip-location__wrapper");
     private final SelenideElement confirmLocationButton = $(".tooltip-location__wrapper").$(byText("Да, верно"));
     private final SelenideElement loginModal = $(".mts-universal-modal__content");
-    private final SelenideElement searchInput = $("input[name='q']");
+    private final SelenideElement searchModal = $(".search-modal__search");
+    private final SelenideElement searchInput = $("mm-web-search-input input");
 
     // Actions
     @Step("Открыть главную страницу МТС")
@@ -65,7 +66,7 @@ public class MtsPage {
 
     @Step("Проверить появление модального окна поиска")
     public MtsPage verifySearchModalIsVisible() {
-        searchInput.shouldBe(visible);
+        searchModal.shouldBe(Condition.visible);
         return this;
     }
 
@@ -92,7 +93,7 @@ public class MtsPage {
 
     @Step("Ввести в поле поиска текст: {text} и нажать Enter")
     public MtsPage enterSearchText(String text) {
-        searchInput.shouldBe(visible).setValue(text).pressEnter();
+        searchInput.setValue(text).pressEnter();
         return this;
     }
 }
