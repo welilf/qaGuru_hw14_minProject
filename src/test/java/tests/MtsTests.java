@@ -59,10 +59,19 @@ public class MtsTests {
     }
 
     @Test
-    @DisplayName("Проверка того, что пункт 'Мобильная связь' виден на главной странице")
-    void verifyMobileMenuIsVisibleOnMainPage() {
+    @DisplayName("Проверка того, что пункт 'Госзаказчикам' виден на главной странице")
+    void verifyGosLinkIsVisibleOnMainPage() {
         mtsPage.openPage()
-                .verifyMobileMenuIsVisible(data.mobileMenuTitle);
+                .checkGosLink(data.gosTitle);
+    }
+
+    @Test
+    @DisplayName("Проверка перехода в раздел 'Госзаказчикам' через верхнее меню")
+    void verifyGosLinkTransition() {
+        mtsPage.openPage()
+                .checkGosLink(data.gosTitle)
+                .clickGosLink()
+                .verifyCurrentUrl("/gos");
     }
 
     @Test
@@ -86,5 +95,13 @@ public class MtsTests {
         mtsPage.openPage()
                 .clickLogin()
                 .verifyLoginModalIsVisible();
+    }
+
+    @Test
+    @DisplayName("Проверка ввода текста в строку поиска")
+    void checkSearchExecution() {
+        mtsPage.openPage()
+                .clickSearch()
+                .enterSearchText("Тарифы");
     }
 }

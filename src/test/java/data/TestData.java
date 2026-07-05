@@ -1,6 +1,6 @@
 package data;
 
 public class TestData {
-    public String mobileMenuTitle = "Мобильная связь";
+    public String gosTitle = "Госзаказчикам";
     public String privateClientsTitle = "Частным клиентам";
 }

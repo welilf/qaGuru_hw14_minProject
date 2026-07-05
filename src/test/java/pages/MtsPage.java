@@ -13,15 +13,16 @@ import static com.codeborne.selenide.Selenide.open;
 public class MtsPage {
 
     // Elements
-    private final SelenideElement searchButton = $(".header-search__text");
+    private final SelenideElement searchButton = $(".header-search__icon");
     private final SelenideElement privateClientsLink = $("a[eventid='vntMtsCrossTopLinks'][href='/personal']");
     private final SelenideElement loginButton = $("#profile-widget-app a[href*='login']");
-    private final SelenideElement mobileMenu = $(".main-menu-navigation__item-inner");
+    private final SelenideElement gosLink = $("a[eventid='vntMtsCrossTopLinks'][href='/gos']");
     private final SelenideElement logo = $(".middle-menu__logo");
     private final SelenideElement locationTooltip = $(".tooltip-location__wrapper");
     private final SelenideElement confirmLocationButton = $(".tooltip-location__wrapper").$(byText("Да, верно"));
     private final SelenideElement searchModal = $(".search-modal-widgets");
     private final SelenideElement loginModal = $(".mts-universal-modal__content");
+    private final SelenideElement searchInput = $("input[name='q']");
 
     // Actions
     @Step("Открыть главную страницу МТС")
@@ -36,9 +37,15 @@ public class MtsPage {
         return this;
     }
 
-    @Step("Проверить, что пункт 'Мобильная связь' виден")
-    public MtsPage verifyMobileMenuIsVisible(String title) {
-        mobileMenu.shouldHave(text(title));
+    @Step("Проверить наличие ссылки 'Госзаказчикам'")
+    public MtsPage checkGosLink(String title) {
+        gosLink.shouldHave(text(title));
+        return this;
+    }
+
+    @Step("Кликнуть на ссылку 'Госзаказчикам'")
+    public MtsPage clickGosLink() {
+        gosLink.click();
         return this;
     }
 
@@ -75,6 +82,18 @@ public class MtsPage {
     @Step("Проверить появление модального окна логина")
     public MtsPage verifyLoginModalIsVisible() {
         loginModal.shouldBe(Condition.visible);
+        return this;
+    }
+
+    @Step("Проверить, что текущий URL содержит {expectedUrl}")
+    public MtsPage verifyCurrentUrl(String expectedUrl) {
+        com.codeborne.selenide.WebDriverRunner.url().contains(expectedUrl);
+        return this;
+    }
+
+    @Step("Ввести в поле поиска текст: {text} и нажать Enter")
+    public MtsPage enterSearchText(String text) {
+        searchInput.setValue(text).pressEnter();
         return this;
     }
 }
