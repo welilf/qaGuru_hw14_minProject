@@ -16,7 +16,7 @@ public class TestBase {
     static void setUpConfig() {
 
         Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty("browserVersion", "127.0");
+        Configuration.browserVersion = System.getProperty("browserVersion", "148.0");
         Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
         Configuration.browserSize = System.getProperty("browserScreenSize", "1920x1080");
         Configuration.baseUrl = System.getProperty("baseUrl");
