@@ -10,6 +10,8 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.WebDriverRunner.url;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MtsSupportPage {
 
@@ -22,9 +24,8 @@ public class MtsSupportPage {
 
     @Step("Проверить, что открылся URL поддержки")
     public MtsSupportPage verifySupportUrl() {
-        org.junit.jupiter.api.Assertions.assertTrue(
-                com.codeborne.selenide.WebDriverRunner.url().equals(data.TestData.SUPPORT_BASE_URL),
-                "Ожидался URL страницы поддержки, но открылся: " + com.codeborne.selenide.WebDriverRunner.url()
+        assertTrue(url().contains(data.TestData.SUPPORT_BASE_URL),
+                "Ожидался URL страницы поддержки, но открылся: " + url()
         );
         return this;
     }

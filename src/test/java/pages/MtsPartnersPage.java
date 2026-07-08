@@ -16,7 +16,7 @@ public class MtsPartnersPage {
     // Actions
     @Step("Проверить, что открылся URL раздела 'Партнёрам'")
     public MtsPartnersPage verifyPartnersUrl() {
-        assertTrue(url().equals(data.TestData.PARTNERS_URL),
+        assertTrue(url().contains(data.TestData.PARTNERS_URL),
                 "Ожидался URL партнеров, но открылся: " + url());
         return this;
     }

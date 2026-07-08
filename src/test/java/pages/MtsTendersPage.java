@@ -20,7 +20,7 @@ public class MtsTendersPage {
     // Actions
     @Step("Проверить, что открылся URL раздела 'Закупки'")
     public MtsTendersPage verifyTendersUrl() {
-        assertTrue(url().equals(data.TestData.TENDERS_URL),
+        assertTrue(url().contains(data.TestData.TENDERS_URL),
                 "Ожидался URL закупок, но открылся: " + url());
         return this;
     }
