@@ -19,7 +19,7 @@ public class MtsMainPage {
     private final SelenideElement locationTooltip = $(".tooltip-location__wrapper");
     private final SelenideElement confirmLocationButton = $(".tooltip-location__wrapper").$(byText("Да, верно"));
     private final SelenideElement loginModal = $(".mts-universal-modal__content");
-    private final SelenideElement supportLink = $(".header__top-text:has-text('Поддержка')");
+    private final SelenideElement supportLink = $x("//*[contains(@class, 'header')]//*[normalize-space(text())='Поддержка']");
 
     //Actions
     @Step("Открыть главную страницу МТС")
