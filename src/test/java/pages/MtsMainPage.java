@@ -1,4 +1,4 @@
-package UI.pages;
+package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -40,9 +40,9 @@ public class MtsMainPage {
     }
 
     @Step("Кликнуть на ссылку 'Госзаказчикам'")
-    public MtsMainPage clickGosLink() {
+    public MtsGosPage clickGosLink() {
         gosLink.click();
-        return this;
+        return new MtsGosPage();
     }
 
     @Step("Проверить наличие ссылки на Частных клиентов")
@@ -62,12 +62,6 @@ public class MtsMainPage {
     @Step("Проверить появление модального окна логина")
     public MtsMainPage verifyLoginModalIsVisible() {
         loginModal.shouldBe(Condition.visible);
-        return this;
-    }
-
-    @Step("Проверить, что текущий URL содержит {expectedUrl}")
-    public MtsMainPage verifyCurrentUrl(String expectedUrl) {
-        com.codeborne.selenide.WebDriverRunner.url().contains(expectedUrl);
         return this;
     }
 }
