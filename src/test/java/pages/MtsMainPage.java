@@ -19,6 +19,7 @@ public class MtsMainPage {
     private final SelenideElement locationTooltip = $(".tooltip-location__wrapper");
     private final SelenideElement confirmLocationButton = $(".tooltip-location__wrapper").$(byText("Да, верно"));
     private final SelenideElement loginModal = $(".mts-universal-modal__content");
+    private final SelenideElement supportLink = $(".header__top-text").$(com.codeborne.selenide.Selectors.byText("Поддержка"));
 
     //Actions
     @Step("Открыть главную страницу МТС")
@@ -63,5 +64,15 @@ public class MtsMainPage {
     public MtsMainPage verifyLoginModalIsVisible() {
         loginModal.shouldBe(Condition.visible);
         return this;
+    }
+
+    @Step("Кликнуть по ссылке 'Поддержка' в верхнем меню")
+    public MtsSupportPage clickSupportLink() {
+        supportLink.shouldBe(visible).click();
+        try {
+            switchTo().window(1);
+        } catch (IndexOutOfBoundsException e) {
+        }
+        return new MtsSupportPage();
     }
 }

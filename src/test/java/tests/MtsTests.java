@@ -62,4 +62,29 @@ public class MtsTests extends TestBase {
         searchPage.openSearchPage()
                 .verifySearchButtonIsDisabled();
     }
+
+    @Test
+    @DisplayName("Поиск инструкций по расторжению договора в разделе Поддержка")
+    void checkSupportContractTerminationSearchTest() {
+        mtsPage.openPage()
+                .clickSupportLink()
+                .verifySupportUrl()
+                .searchInSupport(TestData.SUPPORT_QUERY)
+                .verifyArticleInResults(TestData.MOBILE_CONTRACT_ARTICLE)
+                .verifyArticleInResults(TestData.INTERNET_CONTRACT_ARTICLE);
+    }
+
+    @Test
+    @DisplayName("Поиск информации о складах в разделе Закупки для Партнеров")
+    void checkPartnersTendersWarehouseSearchTest() {
+        mtsPage.openPage()
+                .clickSupportLink()
+                .verifySupportUrl()
+                .clickPartnersTab()
+                .verifyPartnersUrl()
+                .clickTendersLink()
+                .verifyTendersUrl()
+                .searchInTenders(TestData.PARTNERS_QUERY)
+                .verifyArticleInTendersResults(TestData.WAREHOUSE_ARTICLE);
+    }
 }
