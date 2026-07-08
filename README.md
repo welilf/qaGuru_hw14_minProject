@@ -45,14 +45,14 @@
 
 ### 📊 Отчетность и уведомления
 
-#### [Allure Report](https://jenkins.autotests.cloud/view/java_students/job/qaGuru_hw14_minProject/19/allure/)
+#### [Allure Report](https://jenkins.autotests.cloud/view/java_students/job/qaGuru_hw14_minProject/allure/)
 Детальные отчеты с аннотациями `@Step`, скриншотами и системными логами.
 > **Скриншот Dashboard:**
 > ![Allure Dashboard](media/allure_main.png)
 > > **Скриншот с отражением аннотаций и вложений:**
 > ![Allure Suites](media/allure_suites.png)
 
-#### [Jenkins Pipeline](https://jenkins.autotests.cloud/view/java_students/job/qaGuru_hw14_minProject/19/)
+#### [Jenkins Pipeline](https://jenkins.autotests.cloud/view/java_students/job/qaGuru_hw14_minProject)
 Тесты запускаются автоматически на удаленном сервере. Проект полностью интегрирован в CI/CD процесс.
 > > **Скриншот страницы запуска сборки с возможностью настройки необходимых параметров:**
 > ![Jenkins Build page](media/jenkins_build_with_parameters.png)
