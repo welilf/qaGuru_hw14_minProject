@@ -6,8 +6,7 @@ import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -20,8 +19,9 @@ public class MtsTendersPage {
     // Actions
     @Step("Проверить, что открылся URL раздела 'Закупки'")
     public MtsTendersPage verifyTendersUrl() {
-        assertTrue(url().contains(data.TestData.TENDERS_URL),
-                "Ожидался URL закупок, но открылся: " + url());
+       Wait().until(driver -> com.codeborne.selenide.WebDriverRunner.url().contains("mts-tenders"));
+        assertTrue(com.codeborne.selenide.WebDriverRunner.url().contains(data.TestData.TENDERS_URL),
+                "URL не содержит адрес раздела 'Закупки'. Открылся: " + com.codeborne.selenide.WebDriverRunner.url());
         return this;
     }
 

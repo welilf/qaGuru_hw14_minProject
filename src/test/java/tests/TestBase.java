@@ -16,15 +16,15 @@ public class TestBase {
     static void setUpConfig() {
 
         Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty("browserVersion", "148.0");
+//        Configuration.browserVersion = System.getProperty("browserVersion", "148.0");
         Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
         Configuration.browserSize = System.getProperty("browserScreenSize", "1920x1080");
         Configuration.baseUrl = System.getProperty("baseUrl");
-        Configuration.remote = "https://"
-                + System.getProperty("selenoidLogin") + ":"
-                + System.getProperty("selenoidPass") + "@"
-                + System.getProperty("selenoidURL");
-
+//        Configuration.remote = "https://"
+//                + System.getProperty("selenoidLogin") + ":"
+//                + System.getProperty("selenoidPass") + "@"
+//                + System.getProperty("selenoidURL");
+//
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
