@@ -28,7 +28,8 @@ public class TestBase {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
-                "enableVideo", true
+                "enableVideo", true,
+                "screenResolution", "1920x1080x24"
         ));
         Configuration.browserCapabilities = capabilities;
     }
